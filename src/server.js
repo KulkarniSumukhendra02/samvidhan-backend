@@ -9,6 +9,7 @@ const articleRoutes = require("./routes/articleRoutes");
 const permissionRoutes = require("./routes/permissionRoutes");
 const procedureRoutes = require("./routes/procedureRoutes");
 const chatRoutes = require("./routes/chatRoutes");
+const articleSeed = require("./routes/articleSeed");
 
 const app = express();
 
@@ -24,6 +25,7 @@ app.use("/api/articles", articleRoutes);
 app.use("/api/permissions", permissionRoutes);
 app.use("/api/procedures", procedureRoutes);
 app.use("/api/chat", chatRoutes);
+app.use("/api/seed/articles", articleSeed);
 // Home Route
 app.get("/", (req, res) => {
   res.json({
