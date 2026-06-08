@@ -1,13 +1,14 @@
 const express = require("express");
-
 const router = express.Router();
+
+const Permission = require("../models/Permission");
 
 const {
   getPermissions,
+  getPermissionById,
 } = require("../controllers/permissionController");
 
 router.get("/", getPermissions);
-const Permission = require("../models/Permission");
 
 router.get("/seed", async (req, res) => {
   try {
@@ -21,50 +22,52 @@ router.get("/seed", async (req, res) => {
         documents: [
           "Aadhaar Card",
           "PAN Card",
-          "Business Address Proof"
+          "Business Address Proof",
         ],
         steps: [
           "Register on FSSAI portal",
           "Submit documents",
           "Pay fees",
-          "Receive license"
+          "Receive license",
         ],
-        authority: "FSSAI"
+        authority: "FSSAI",
       },
       {
         title: "Trade License",
         category: "Business",
-        description: "Permission from local municipal authority to conduct business.",
+        description:
+          "Permission from local municipal authority to conduct business.",
         documents: [
           "Identity Proof",
           "Address Proof",
-          "Business Details"
+          "Business Details",
         ],
         steps: [
           "Apply to municipality",
           "Upload documents",
           "Pay fees",
-          "Get approval"
+          "Get approval",
         ],
-        authority: "Municipal Corporation"
+        authority: "Municipal Corporation",
       },
       {
         title: "GST Registration",
         category: "Tax",
-        description: "Required for businesses crossing GST thresholds.",
+        description:
+          "Required for businesses crossing GST thresholds.",
         documents: [
           "PAN Card",
           "Aadhaar Card",
-          "Business Proof"
+          "Business Proof",
         ],
         steps: [
           "Apply on GST portal",
           "Verify OTP",
           "Submit application",
-          "Receive GSTIN"
+          "Receive GSTIN",
         ],
-        authority: "GST Department"
-      }
+        authority: "GST Department",
+      },
     ]);
 
     res.json(permissions);
@@ -74,5 +77,7 @@ router.get("/seed", async (req, res) => {
     });
   }
 });
+
+router.get("/:id", getPermissionById);
 
 module.exports = router;
