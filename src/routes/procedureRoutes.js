@@ -4,12 +4,18 @@ const router = express.Router();
 
 const {
   getProcedures,
+  getProcedureById,
 } = require("../controllers/procedureController");
 
 const Procedure = require("../models/Procedure");
 
+// Get all procedures
 router.get("/", getProcedures);
 
+// Get single procedure by ID
+router.get("/:id", getProcedureById);
+
+// Seed procedures
 router.get("/seed", async (req, res) => {
   try {
     await Procedure.deleteMany({});
@@ -20,15 +26,15 @@ router.get("/seed", async (req, res) => {
         description: "Request information from government departments.",
         documents: [
           "Application Form",
-          "Identity Proof"
+          "Identity Proof",
         ],
         steps: [
           "Write RTI application",
           "Submit to Public Information Officer",
           "Pay fee",
-          "Receive response"
+          "Receive response",
         ],
-        authority: "RTI Department"
+        authority: "RTI Department",
       },
       {
         title: "Income Certificate",
@@ -36,15 +42,15 @@ router.get("/seed", async (req, res) => {
         documents: [
           "Aadhaar Card",
           "Income Proof",
-          "Address Proof"
+          "Address Proof",
         ],
         steps: [
           "Apply online",
           "Upload documents",
           "Verification",
-          "Receive certificate"
+          "Receive certificate",
         ],
-        authority: "Revenue Department"
+        authority: "Revenue Department",
       },
       {
         title: "Caste Certificate",
@@ -52,16 +58,16 @@ router.get("/seed", async (req, res) => {
         documents: [
           "Aadhaar Card",
           "Address Proof",
-          "Community Proof"
+          "Community Proof",
         ],
         steps: [
           "Apply online",
           "Upload documents",
           "Verification",
-          "Certificate issued"
+          "Certificate issued",
         ],
-        authority: "Revenue Department"
-      }
+        authority: "Revenue Department",
+      },
     ]);
 
     res.json(procedures);
