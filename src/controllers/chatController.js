@@ -45,16 +45,11 @@ Description: ${article.description}
     // ======================
     // SEARCH PERMISSIONS
     // ======================
-    const permission = await Permission.findOne({
-      $or: [
-        { title: { $regex: question, $options: "i" } },
-        { category: { $regex: question, $options: "i" } },
-        { description: { $regex: question, $options: "i" } },
-        { authority: { $regex: question, $options: "i" } },
-        { documents: { $regex: question, $options: "i" } },
-        { steps: { $regex: question, $options: "i" } },
-      ],
-    });
+    const permissions = await Permission.find();
+
+    const permission = permissions.find((p) =>
+      question.toLowerCase().includes(p.title.toLowerCase())
+    );
 
     if (permission) {
       const aiAnswer = await generateAnswer(
@@ -79,15 +74,11 @@ Authority: ${permission.authority}
     // ======================
     // SEARCH PROCEDURES
     // ======================
-    const procedure = await Procedure.findOne({
-      $or: [
-        { title: { $regex: question, $options: "i" } },
-        { description: { $regex: question, $options: "i" } },
-        { authority: { $regex: question, $options: "i" } },
-        { documents: { $regex: question, $options: "i" } },
-        { steps: { $regex: question, $options: "i" } },
-      ],
-    });
+    const procedures = await Procedure.find();
+
+    const procedure = procedures.find((p) =>
+      question.toLowerCase().includes(p.title.toLowerCase())
+    );
 
     if (procedure) {
       const aiAnswer = await generateAnswer(

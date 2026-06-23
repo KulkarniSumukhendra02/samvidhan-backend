@@ -119,7 +119,7 @@ npm start
 The API will be available at:
 
 ```text
-http://localhost:5000
+https://samvidhan-backend-1y8w.onrender.com
 ```
 
 ## Available Scripts
@@ -134,7 +134,7 @@ http://localhost:5000
 Base URL for local development:
 
 ```text
-http://localhost:5000
+https://samvidhan-backend-1y8w.onrender.com
 ```
 
 | Method | Endpoint | Description |
@@ -418,19 +418,19 @@ Use this endpoint carefully because it replaces the existing permission collecti
 Get all articles:
 
 ```bash
-curl http://localhost:5000/api/articles
+curl https://samvidhan-backend-1y8w.onrender.com
 ```
 
 Get Article 21:
 
 ```bash
-curl http://localhost:5000/api/articles/21
+curl https://samvidhan-backend-1y8w.onrender.com
 ```
 
 Create an article:
 
 ```bash
-curl -X POST http://localhost:5000/api/articles \
+curl -X POST https://samvidhan-backend-1y8w.onrender.com \
   -H "Content-Type: application/json" \
   -d '{"articleNumber":"14","title":"Right to Equality","description":"The State shall not deny equality before the law."}'
 ```
@@ -438,7 +438,7 @@ curl -X POST http://localhost:5000/api/articles \
 Ask a question:
 
 ```bash
-curl -X POST http://localhost:5000/api/chat \
+curl -X POST https://samvidhan-backend-1y8w.onrender.com \
   -H "Content-Type: application/json" \
   -d '{"question":"What does Article 21 mean?"}'
 ```
